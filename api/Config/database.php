@@ -1,15 +1,13 @@
 <?php
 class Database{
  
-    // specify your own database credentials
-    private $host = "localhost";
+    private $host = "localhost";    // specify your own database credentials
     private $db_name = "RestApi";
     private $username = "root";
     private $password = "";
     public $conn;
  
-    // get the database connection
-    public function getConnection(){
+    public function getConnection(){      // get the database connection
  
         $this->conn = null;
  
