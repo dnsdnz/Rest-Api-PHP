@@ -1,11 +1,11 @@
 <?php
 
 	$url = "127.0.0.1";
-	$database = "youdevodb";
+	$database = "db";
 	$username = "root";
 	$password = "";			
 
-	$conn = mysqli_connect($url, $username, $password, $database, "3308");
+	$conn = mysqli_connect($url, $username, $password, $database);
 
 	if (!$conn) {
 		die("Connection failed: " .$conn->connect_error);
