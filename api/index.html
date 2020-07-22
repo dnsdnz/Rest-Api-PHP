@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Youdevo News Web Service</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){		
+			$.get("http://127.0.0.1/services/service.php", function(data,status){
+				console.log(data);
+				var newsItems = JSON.parse(data);
+				for(var i = 0; i < newsItems.length; i++){
+					var item = "id: " + newsItems[i].id +
+								" title: " + newsItems[i].title +
+								" content: " + newsItems[i].content +
+								" category: " + newsItems[i].category +
+								" photo_path: " + newsItems[i].photo_path;
+					item = "<li>" + item + "</li>";	
+					$("#myItems").append(item);	
+				}
+		});
+		$("#saveItem").click(function(){
+			var id1 = $("#id").val();
+			var title1 = $("#title").val();
+			var content1 = $("#content").val();
+			var category1 = $("#category").val();
+			var photo_path1 = $("#photo_path").val();
+			
+			var item = {
+				id : id1,
+				title : title1,
+				content : content1,
+				category : category1,
+				photo_path : photo_path1
+			};
+
+			$.post("http://127.0.0.1/services/service.php", item, function(data){
+					console.log(data);										
+			});
+		});
+
+	});
+	</script>
+
+</head>
+<body>
+	<div>
+		<h1>News Items</h1>										
+		<ol id="myItems">
+			
+		</ol>																													
+	</div>
+	<div>
+		<h2>Add New Item</h2>
+		<label>New Title:</label>
+		<input type="text" id="title"/><br>
+		<label>New Content:</label>
+		<input type="text" id="content"/><br>
+		<label>New Category:</label>
+		<input type="text" id="category"/><br>
+		<label>New Photo Path:</label>
+		<input type="text" id="photo_path"/><br>
+		<input type="button" id="saveItem" value="Save Item"/>
+	</div>
+</body>
+</html>
