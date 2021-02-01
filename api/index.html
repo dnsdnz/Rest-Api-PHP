@@ -6,7 +6,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
 		$(document).ready(function(){		
-			$.get("http://127.0.0.1/services/service.php", function(data,status){
+			$.get("local/services/service.php", function(data,status){
 				console.log(data);
 				var newsItems = JSON.parse(data);
 				for(var i = 0; i < newsItems.length; i++){
@@ -34,7 +34,7 @@
 				photo_path : photo_path1
 			};
 
-			$.post("http://127.0.0.1/services/service.php", item, function(data){
+			$.post("local/services/service.php", item, function(data){
 					console.log(data);										
 			});
 		});
